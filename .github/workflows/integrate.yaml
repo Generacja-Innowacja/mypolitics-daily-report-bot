@@ -1,0 +1,16 @@
+name: 'integrate'
+
+on:
+  pull_request:
+    paths: ['**', '!**.md']
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout repository'
+        uses: 'actions/checkout@v4'
+        with:
+          fetch-depth: 0
+      - name: 'Check if image version is available to publish'
+        run: './.github/scripts/check_version_is_free "$(jq -r ''.version'' package.json)"'
