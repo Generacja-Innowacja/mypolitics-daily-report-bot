@@ -35,8 +35,6 @@ async function sendMessageToDiscord(content) {
   if (!response.ok) {
     throw new Error(`Failed to send message to Discord: ${response.statusText}`);
   }
-
-  return response.json();
 }
 
 async function main() {
