@@ -1,0 +1,7 @@
+# IDEs
+.idea/
+
+# App
+node_modules/
+.env
+
