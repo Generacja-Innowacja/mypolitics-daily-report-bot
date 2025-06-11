@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const baseApiUrl = process.env.MYPOLITICS_API_URL;
+const allowedUserAgent = process.env.ALLOWED_USER_AGENT;
 const projectListUrl = `${baseApiUrl}/api/v1/project`;
 const projectUrl = (projectId) => `${baseApiUrl}/api/v1/project/${projectId}`;
 const surveyStatsUrl = (surveyId) => `${baseApiUrl}/api/v1/survey/${surveyId}/stats`;
@@ -13,7 +14,7 @@ async function fetchFromApi(url) {
   const response = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
-      'User-Agent': 'DiscordBot/1.0',
+      'User-Agent': allowedUserAgent,
       'Accept': 'application/json'
     }
   });
